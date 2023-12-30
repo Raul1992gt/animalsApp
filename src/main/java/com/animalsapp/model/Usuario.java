@@ -1,5 +1,6 @@
 package com.animalsapp.model;
 
+import com.animalsapp.model.animal.Animal;
 import jakarta.persistence.*;
 
 import java.util.Set;
@@ -29,7 +30,7 @@ public class Usuario {
     private Set<Comentario> comentarios;
 
     @OneToMany(mappedBy = "usuario")
-    private Set<com.animalsapp.model.Animal> animales;
+    private Set<Animal> animales;
 
     // Constructor, getters, setters, etc.
 }

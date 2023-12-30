@@ -1,6 +1,7 @@
 package com.animalsapp.model;
 
 
+import com.animalsapp.model.animal.Animal;
 import jakarta.persistence.*;
 
 @Entity
@@ -20,7 +21,7 @@ public class Comentario {
 
     @ManyToOne
     @JoinColumn(name = "AnimalID")
-    private com.animalsapp.model.Animal animal;
+    private Animal animal;
 
     // Constructor, getters, setters, etc.
 }
