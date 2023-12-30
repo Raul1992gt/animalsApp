@@ -1,27 +1,27 @@
 package com.animalsapp.model;
 
 
-import com.animalsapp.model.animal.Animal;
 import jakarta.persistence.*;
+import lombok.Data;
 
 @Entity
-@Table(name = "Comentarios")
+@Table(name = "comentarios")
+@Data
 public class Comentario {
 
     @Id
-    @Column(name = "ComentarioID")
+    @Column(name = "id_comentario")
     private Long id;
 
-    @Column(name = "Contenido", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "contenido", nullable = false, length = 255)
     private String contenido;
 
     @ManyToOne
-    @JoinColumn(name = "UsuarioID")
+    @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 
     @ManyToOne
-    @JoinColumn(name = "AnimalID")
+    @JoinColumn(name = "id_animal")
     private Animal animal;
 
-    // Constructor, getters, setters, etc.
 }

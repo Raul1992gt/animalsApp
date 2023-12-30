@@ -1,22 +1,23 @@
 package com.animalsapp.controller;
 
+import com.animalsapp.model.Animal;
 import com.animalsapp.service.AnimalService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.animalsapp.service.DTO.AnimalInDto;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/animal")
+@RequestMapping("/animales")
 public class AnimalController {
-
 
     private final AnimalService animalService;
 
-    @Autowired
-    public AnimalController(AnimalService animalService) {this.animalService = animalService;}
+    public AnimalController(AnimalService animalService) {
+        this.animalService = animalService;
+    }
 
-    @GetMapping("/saludo")
-    public String saludo() {return animalService.obtenerSaludo();}
+    @PostMapping("/create")
+    public Animal create(@RequestBody AnimalInDto animalInDto) {
+        return this.animalService.create(animalInDto);
+    }
 
 }

@@ -1,22 +1,20 @@
 package com.animalsapp.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.util.Set;
 
 @Entity
-@Table(name = "Roles")
+@Table(name = "roles")
+@Data
 public class Rol {
 
     @Id
-    @Column(name = "RolID")
+    @Column(name = "id_rol")
     private Long id;
 
-    @Column(name = "NombreRol", nullable = false)
+    @Column(name = "rol", nullable = false)
     private String nombre;
 
-    @OneToMany(mappedBy = "rol")
-    private Set<Usuario> usuarios;
-
-    // Constructor, getters, setters, etc.
 }

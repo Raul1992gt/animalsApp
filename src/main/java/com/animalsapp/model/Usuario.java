@@ -1,36 +1,27 @@
 package com.animalsapp.model;
 
-import com.animalsapp.model.animal.Animal;
 import jakarta.persistence.*;
-
-import java.util.Set;
+import lombok.Data;
 
 @Entity
-@Table(name = "Usuarios")
+@Table(name = "usuarios")
+@Data
 public class Usuario {
 
     @Id
-    @Column(name = "UsuarioID")
+    @Column(name = "id_Usuario", nullable = false)
     private Long id;
 
-    @Column(name = "NombreUsuario", nullable = false)
+    @Column(name = "nombre_Usuario", nullable = false)
     private String nombreUsuario;
 
-    @Column(name = "CorreoElectronico", nullable = false)
+    @Column(name = "correo_electronico", nullable = false)
     private String correoElectronico;
 
-    @Column(name = "Contraseña", nullable = false)
-    private String contraseña;
+    @Column(name = "password", nullable = false)
+    private String password;
 
     @ManyToOne
-    @JoinColumn(name = "RolID", nullable = false)
+    @JoinColumn(name = "id_rol", nullable = false)
     private Rol rol;
-
-    @OneToMany(mappedBy = "usuario")
-    private Set<Comentario> comentarios;
-
-    @OneToMany(mappedBy = "usuario")
-    private Set<Animal> animales;
-
-    // Constructor, getters, setters, etc.
 }
