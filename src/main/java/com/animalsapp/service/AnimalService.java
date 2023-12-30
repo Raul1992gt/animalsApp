@@ -11,17 +11,16 @@ import org.springframework.stereotype.Service;
 public class AnimalService {
 
     @Autowired
-    AnimalRepository animalRepository;
+    private final AnimalRepository animalRepository;
     private final AnimalInDtoToAnimal mapper;
 
     @Autowired
-    public AnimalService(AnimalInDtoToAnimal mapper) {
+    public AnimalService(AnimalInDtoToAnimal mapper, AnimalRepository animalRepository) {
         this.mapper = mapper;
+        this.animalRepository = animalRepository;
     }
 
     public Animal create(AnimalInDto animalInDto) {
-        System.out.println("animalInDto = " + animalInDto);
-        System.out.println("animal = " + mapper.map(animalInDto));
         Animal animal = mapper.map(animalInDto);
         return this.animalRepository.save(animal);
     }
